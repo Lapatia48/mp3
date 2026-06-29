@@ -20,19 +20,32 @@ public final class PlaylistDtos {
      * <ul>
      *   <li>{@code minMinutes}/{@code maxMinutes} : fourchette de duree visee.
      *       {@code durationMinutes} reste accepte (compat) comme cible unique.</li>
-     *   <li>{@code includeArtists}/{@code includeAlbums} : si non vide, seuls ces
-     *       artistes/albums sont retenus (sinon tous).</li>
-     *   <li>{@code excludeArtists}/{@code excludeAlbums} : artistes/albums ecartes.</li>
+     *   <li>{@code includeArtists}/{@code includeAlbums} : graines (priorite). La
+     *       playlist commence par ces artistes/albums puis se complete avec le
+     *       reste de la bibliotheque pour atteindre la duree visee.</li>
+     *   <li>{@code onlyArtists}/{@code onlyAlbums} : sous-ensemble marque
+     *       « uniquement ». Un artiste « uniquement » restreint toute la playlist
+     *       a cet artiste ; un album « uniquement » impose l'album entier (et,
+     *       seul, arrete la la generation).</li>
+     *   <li>{@code excludeArtists}/{@code excludeAlbums}/{@code excludeGenres} :
+     *       exclusions absolues — ces morceaux n'apparaissent jamais, meme si la
+     *       playlist en devient plus courte.</li>
+     *   <li>{@code includeGenres} : si non vide, seuls ces genres sont retenus.</li>
      * </ul>
+     * Le champ {@code genre} est conserve pour compatibilite (ancien client).
      */
     public record GenerateRequest(
             Integer durationMinutes,
             Integer minMinutes,
             Integer maxMinutes,
             String genre,
+            List<String> includeGenres,
+            List<String> excludeGenres,
             List<String> includeArtists,
+            List<String> onlyArtists,
             List<String> excludeArtists,
             List<String> includeAlbums,
+            List<String> onlyAlbums,
             List<String> excludeAlbums) {
     }
 

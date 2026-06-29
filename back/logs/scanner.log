@@ -1,336 +1,457 @@
-2026-06-24T09:09:39.339+03:00  INFO 18504 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 18504 (L:\cours\leçons\S6\mp3\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\mp3\back)
-2026-06-24T09:09:39.425+03:00  INFO 18504 --- [mp3] [main] s6.mp3.Mp3Application                    : The following 1 profile is active: "scanner"
-2026-06-24T09:09:52.299+03:00  INFO 18504 --- [mp3] [main] s6.mp3.Mp3Application                    : Started Mp3Application in 16.364 seconds (process running for 19.185)
-2026-06-24T09:09:54.165+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:09:54.195+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:10:09.205+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:10:09.205+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:10:24.215+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:10:24.219+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:10:39.222+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:10:39.224+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:10:54.229+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:10:54.232+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:11:09.244+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:11:09.244+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:11:24.261+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:11:24.261+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:11:39.273+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:11:39.276+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:11:54.292+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:11:54.294+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:12:09.296+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:12:09.299+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:12:24.308+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:12:24.308+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:12:39.325+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:12:39.329+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:12:54.338+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:12:54.343+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:13:09.359+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:13:09.362+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:13:24.365+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:13:24.368+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:13:39.386+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:13:39.389+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:13:54.392+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:13:54.396+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:14:09.399+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:14:09.402+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:14:24.418+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:14:24.421+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:14:39.423+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:14:39.424+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:14:54.430+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:14:54.431+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:15:09.448+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:15:09.448+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:15:24.456+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:15:24.456+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:15:39.460+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:15:39.460+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:15:54.476+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:15:54.477+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:16:09.482+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:16:09.482+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:16:24.493+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:16:24.493+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:16:39.511+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:16:39.513+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:16:54.530+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:16:54.530+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:17:09.534+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:17:09.534+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:17:24.550+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:17:24.550+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:17:39.559+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:17:39.561+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:17:54.568+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:17:54.568+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:18:09.577+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:18:09.577+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:18:24.592+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:18:24.592+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:18:39.595+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:18:39.595+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:18:54.610+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:18:54.610+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:19:09.619+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:19:09.619+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:19:24.626+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:19:24.626+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:19:39.636+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:19:39.638+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Alec Benjamin - Let Me Down Slowly [Official Music Video](MP3_160K).mp3
-2026-06-24T09:19:39.736+03:00  INFO 18504 --- [mp3] [scheduling-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-24T09:19:39.899+03:00  INFO 18504 --- [mp3] [scheduling-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#489091bd:0/SimpleConnection@26d9be54 [delegate=amqp://guest@127.0.0.1:5672/, localPort=54646]
-2026-06-24T09:19:39.942+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Andro ririnina-MAHALEO(MP3_160K).mp3
-2026-06-24T09:19:39.945+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Ao izy e _  (Dadah _ Inah)(MP3_160K).mp3
-2026-06-24T09:19:39.947+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Bodo - Dada(MP3_160K).mp3
-2026-06-24T09:19:39.949+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : CKYCKY _ MAJESTY _ RIM-KA - NUMBER ONE (Clip Officiel)(MP3_160K).mp3
-2026-06-24T09:19:39.951+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : ELIDIOT -  Aza latsaigny ( Clip Officiel 1080p HD )(MP3_160K).mp3
-2026-06-24T09:19:39.953+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Eric Manana - Voninkazo adaladala(MP3_160K).mp3
-2026-06-24T09:19:39.954+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : HIARAKA ISIKA Mahaleo Live _ Olympia(MP3_160K).mp3
-2026-06-24T09:19:39.959+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : LENDREMA _MAHALEO_(MP3_160K).mp3
-2026-06-24T09:19:39.961+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Lôla feat Stephanie - Mandramaty(MP3_128K).mp3
-2026-06-24T09:19:39.963+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Mianatra Misintaka - Mahaleo(MP3_160K).mp3
-2026-06-24T09:19:39.964+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Rim-Ka - KaraKaraiKo (Officiel Vidéo)(MP3_128K).mp3
-2026-06-24T09:19:39.966+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Shyn - Angalaka Ano (Feat Quatuor Squad X Davalt Records)(MP3_160K).mp3
-2026-06-24T09:19:39.969+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Skaiz - Hitety fotoana (Directed by Tsilavina R La St_art Project2025)(MP3_160K)-1.mp3
-2026-06-24T09:19:39.972+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Skaiz - Omeo ahy [Video 2016](MP3_160K)-1.mp3
-2026-06-24T09:19:39.976+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : Skaiz - Tsy Avelako Ho Nofy [ Official audio 2020 ](MP3_160K).mp3
-2026-06-24T09:19:39.978+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : SOMAMBISAMBY MAHALEO(MP3_160K).mp3
-2026-06-24T09:19:39.981+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : TAA TENSE - MBOLA TIAKO HD(MP3_160K).mp3
-2026-06-24T09:19:39.992+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : TSOTA - Zava-mahery [LYRICS VIDEO] (Official audio 2019)(MP3_160K).mp3
-2026-06-24T09:19:39.998+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : VITAA _ SLIMANE - Avant toi (Clip Officiel)(MP3_160K).mp3
-2026-06-24T09:19:40.001+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Nouveau fichier detecte : VOLOLONA Mahaleo Live _ Olympia(MP3_160K).mp3
-2026-06-24T09:19:40.003+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (21 nouveau(x) fichier(s))
-2026-06-24T09:19:55.007+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:19:55.009+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:20:10.021+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:20:10.023+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:20:25.026+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:20:25.026+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:20:40.028+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:20:40.028+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:20:55.042+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:20:55.042+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:21:10.046+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:21:10.046+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:21:25.058+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:21:25.058+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:21:40.067+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:21:40.067+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:21:55.079+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:21:55.079+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:22:10.089+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:22:10.089+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:22:25.104+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:22:25.105+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:22:40.114+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:22:40.114+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:22:55.117+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:22:55.118+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:23:10.128+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:23:10.128+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:23:25.132+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:23:25.132+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:23:40.140+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:23:40.142+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:23:55.160+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:23:55.160+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:24:10.177+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:24:10.178+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:24:25.185+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:24:25.185+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:24:40.199+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:24:40.201+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:24:55.214+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:24:55.214+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:25:10.217+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:25:10.218+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:25:25.223+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:25:25.226+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:25:40.229+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:25:40.229+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:25:55.235+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:25:55.236+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:26:10.244+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:26:10.244+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:26:25.259+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:26:25.259+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:26:40.263+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:26:40.263+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:26:55.276+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:26:55.276+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:27:10.280+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:27:10.285+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:27:25.297+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:27:25.297+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:27:40.308+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:27:40.308+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:27:55.310+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:27:55.310+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:28:10.311+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:28:10.311+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:28:25.317+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:28:25.317+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:28:40.331+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:28:40.331+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:28:55.338+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:28:55.339+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:29:10.342+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:29:10.343+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:29:25.353+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:29:25.354+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:29:40.368+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:29:40.369+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:29:55.374+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:29:55.374+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:30:10.378+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:30:10.378+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:30:25.392+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:30:25.392+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:30:40.406+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:30:40.406+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:30:55.415+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:30:55.415+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:31:10.421+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:31:10.421+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:31:25.428+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:31:25.428+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:31:40.439+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:31:40.439+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:31:55.453+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:31:55.453+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:32:10.462+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:32:10.463+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:32:25.473+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:32:25.473+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:32:40.488+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:32:40.488+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:32:55.506+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:32:55.507+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:33:10.522+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:33:10.523+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:33:25.539+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:33:25.539+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:33:40.550+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:33:40.550+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:33:55.564+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:33:55.565+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:34:10.567+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:34:10.567+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:34:25.579+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:34:25.579+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:34:40.582+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:34:40.582+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:34:55.592+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:34:55.593+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:35:10.599+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:35:10.599+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:35:25.604+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:35:25.604+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:35:40.607+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:35:40.607+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:35:55.611+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:35:55.612+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:36:10.619+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:36:10.619+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:36:25.634+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:36:25.635+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:36:40.644+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:36:40.644+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:36:55.659+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:36:55.660+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:37:10.675+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:37:10.676+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:37:25.690+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:37:25.690+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:37:40.697+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:37:40.698+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:37:55.708+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:37:55.708+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:38:10.713+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:38:10.713+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:38:25.727+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:38:25.728+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:38:40.731+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:38:40.731+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:38:55.740+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:38:55.740+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:39:10.742+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:39:10.742+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:39:25.744+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:39:25.745+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:39:40.760+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:39:40.760+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:39:55.769+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:39:55.770+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:40:10.787+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:40:10.787+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:40:25.797+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:40:25.798+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:40:40.801+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:40:40.801+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:40:55.808+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:40:55.808+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:41:10.820+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:41:10.820+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:41:25.831+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:41:25.831+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:41:40.835+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:41:40.836+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:41:55.849+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:41:55.849+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:42:10.857+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:42:10.857+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:42:25.869+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:42:25.869+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:42:40.882+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:42:40.882+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:42:55.885+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:42:55.887+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:43:10.891+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:43:10.891+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:43:25.900+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:43:25.901+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:43:40.912+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:43:40.912+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:43:55.921+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:43:55.922+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:44:10.932+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:44:10.932+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:44:25.940+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:44:25.940+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:44:40.950+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:44:40.950+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:44:55.954+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:44:55.955+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:45:10.963+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:45:10.965+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:45:25.979+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:45:25.979+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:45:40.986+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:45:40.986+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:45:55.994+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:45:55.994+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:46:11.002+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:46:11.002+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:46:26.014+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:46:26.014+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:46:41.025+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:46:41.025+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:46:56.029+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:46:56.029+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:47:11.043+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:47:11.043+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:47:26.048+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:47:26.048+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:47:41.056+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:47:41.056+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:47:56.066+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:47:56.066+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:48:11.069+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:48:11.069+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
-2026-06-24T09:50:52.040+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
-2026-06-24T09:50:52.041+03:00  INFO 18504 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:12:36.532+03:00  INFO 8428 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 8428 (L:\cours\leçons\S6\naina\mp3-git\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\naina\mp3-git\back)
+2026-06-30T01:12:36.613+03:00  INFO 8428 --- [mp3] [main] s6.mp3.Mp3Application                    : The following 1 profile is active: "scanner"
+2026-06-30T01:12:51.491+03:00  INFO 8428 --- [mp3] [main] s6.mp3.Mp3Application                    : Started Mp3Application in 17.91 seconds (process running for 20.901)
+2026-06-30T01:12:53.532+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:12:53.544+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:13:08.561+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:13:08.563+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:13:23.575+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:13:23.578+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:13:38.590+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:13:38.593+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:13:53.602+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:13:53.604+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:14:08.617+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:14:08.617+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:14:23.633+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:14:23.633+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:14:38.642+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:14:38.644+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:14:53.658+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:14:53.660+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:15:08.668+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:15:08.668+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:15:23.683+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:15:23.687+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:15:38.695+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:15:38.697+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:15:53.699+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:15:53.703+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:16:08.709+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:16:08.712+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:16:23.723+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:16:23.725+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:16:38.735+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:16:38.737+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:16:53.754+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:16:53.756+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:17:08.764+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:17:08.765+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:17:23.777+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:17:23.780+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:17:38.788+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:17:38.792+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:17:53.798+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:17:53.800+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:18:08.819+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:18:08.819+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:18:23.837+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:18:23.840+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:18:38.846+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:18:38.848+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:18:53.856+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:18:53.857+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:19:08.862+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:19:08.862+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:19:23.870+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:19:23.870+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:19:38.880+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:19:38.884+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:19:53.899+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:19:53.903+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:20:08.907+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:20:08.912+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:20:23.928+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:20:23.932+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:20:38.944+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:20:38.947+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:20:53.964+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:20:53.966+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:21:08.977+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:21:08.982+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:21:23.985+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:21:23.988+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:21:38.995+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:21:38.999+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:21:54.016+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:21:54.018+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:22:09.030+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:22:09.032+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:22:24.043+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:22:24.045+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:22:39.058+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:22:39.061+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:22:54.081+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:22:54.081+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:23:09.098+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:23:09.102+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:23:24.120+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:23:24.122+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:23:39.138+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:23:39.142+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:23:54.144+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:23:54.145+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:24:09.162+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:24:09.162+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:24:24.177+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:24:24.178+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:24:39.182+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:24:39.184+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:24:54.196+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:24:54.199+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:25:09.204+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:25:09.206+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:25:24.220+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:25:24.223+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:25:39.232+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:25:39.234+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:25:54.246+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:25:54.248+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:26:09.253+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:26:09.253+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:26:24.263+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:26:24.264+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:26:39.269+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:26:39.269+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:26:54.276+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:26:54.278+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:27:09.281+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:27:09.283+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:27:24.293+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:27:24.293+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:27:39.307+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:27:39.307+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:27:54.324+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:27:54.326+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:28:09.336+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:28:09.336+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:28:24.344+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:28:24.346+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:28:39.354+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:28:39.356+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:28:54.375+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:28:54.378+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:29:09.383+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:29:09.385+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:29:24.395+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:29:24.399+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:29:39.400+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:29:39.404+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:29:54.406+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:29:54.406+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:30:09.414+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:30:09.415+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:30:24.418+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:30:24.418+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:30:39.436+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:30:39.439+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:30:54.452+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:30:54.455+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:31:09.467+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:31:09.470+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:31:24.482+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:31:24.483+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:31:39.486+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:31:39.486+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:31:54.500+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:31:54.502+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:32:09.511+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:32:09.513+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:32:24.518+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:32:24.518+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:32:39.525+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:32:39.527+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:32:54.539+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:32:54.539+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:33:09.550+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:33:09.555+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:33:24.566+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:33:24.569+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:33:39.572+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:33:39.572+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:33:54.587+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:33:54.590+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:34:09.594+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:34:09.594+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:34:24.610+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:34:24.612+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:34:39.621+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:34:39.622+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:34:54.630+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:34:54.634+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:35:09.649+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:35:09.651+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:35:24.652+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:35:24.652+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:35:39.659+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:35:39.659+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:35:54.673+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:35:54.673+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:36:09.678+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:36:09.680+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:36:24.683+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:36:24.683+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:36:39.695+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:36:39.710+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:36:54.725+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:36:54.725+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:37:09.729+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:37:09.731+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:37:24.735+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:37:24.737+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:37:39.749+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:37:39.752+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:37:54.762+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:37:54.762+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:38:09.767+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:38:09.773+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:38:24.790+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:38:24.791+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:38:39.795+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:38:39.799+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:38:54.811+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:38:54.814+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:39:09.830+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:39:09.831+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:39:24.836+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:39:24.836+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:39:39.842+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:39:39.844+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:39:54.847+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:39:54.851+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:40:09.868+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:40:09.870+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:40:24.879+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:40:24.881+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:40:39.893+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:40:39.896+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:40:54.911+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:40:54.913+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:41:09.916+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:41:09.918+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:41:24.930+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:41:24.931+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:41:39.942+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:41:39.944+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:41:54.958+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:41:54.961+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:42:09.967+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:42:09.971+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:42:24.981+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:42:24.985+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:42:39.992+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:42:39.996+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:42:54.999+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:42:54.999+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:43:10.024+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:43:10.027+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:43:25.031+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:43:25.034+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:43:40.041+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:43:40.043+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:43:55.046+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:43:55.051+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:44:10.063+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:44:10.065+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:44:25.076+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:44:25.078+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:44:40.088+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:44:40.091+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:44:55.095+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:44:55.095+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:45:10.100+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:45:10.104+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:45:25.117+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:45:25.117+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:45:40.127+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:45:40.127+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:45:55.132+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:45:55.132+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:46:10.141+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:46:10.142+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:46:25.148+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:46:25.149+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:46:40.165+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:46:40.167+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:46:55.172+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:46:55.174+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:47:10.189+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:47:10.191+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:47:25.199+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:47:25.199+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:47:40.213+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:47:40.215+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:47:55.234+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:47:55.237+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:48:10.250+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:48:10.253+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:48:25.257+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:48:25.259+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:48:40.263+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:48:40.263+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:48:55.272+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:48:55.274+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:49:10.288+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:49:10.290+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:49:25.305+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:49:25.307+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:49:40.321+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:49:40.323+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:49:55.335+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:49:55.338+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:50:10.351+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:50:10.351+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:50:25.367+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:50:25.369+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:50:40.375+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:50:40.377+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:50:55.381+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:50:55.382+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:51:10.385+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:51:10.389+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:51:25.403+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:51:25.404+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:51:40.411+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:51:40.412+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:51:55.416+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:51:55.416+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:52:10.430+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:52:10.436+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:52:25.439+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:52:25.446+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:52:40.449+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:52:40.449+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:52:55.459+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:52:55.460+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:53:10.466+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:53:10.466+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:53:25.474+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:53:25.476+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:53:40.488+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:53:40.488+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:53:55.493+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:53:55.493+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:54:10.509+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:54:10.509+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:54:25.520+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:54:25.522+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:54:40.528+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:54:40.530+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:54:55.543+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:54:55.543+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:55:10.561+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:55:10.564+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:55:25.568+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:55:25.571+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:55:40.583+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:55:40.584+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:55:55.596+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:55:55.598+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:56:10.614+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:56:10.617+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:56:25.622+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:56:25.622+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:56:40.625+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:56:40.628+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:56:55.640+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:56:55.640+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:57:10.651+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:57:10.653+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:57:25.661+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:57:25.661+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:57:40.676+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:57:40.678+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:57:55.693+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:57:55.694+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:58:10.699+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:58:10.699+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:58:25.710+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:58:25.711+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:58:40.718+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:58:40.720+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:58:55.722+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:58:55.723+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:59:10.737+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:59:10.741+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:59:25.751+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:59:25.753+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:59:40.759+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:59:40.759+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T01:59:55.773+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T01:59:55.773+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:00:10.784+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:00:10.786+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:00:25.789+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:00:25.792+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:00:40.801+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:00:40.801+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:00:55.809+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:00:55.809+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:01:10.815+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:01:10.815+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:01:25.825+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:01:25.829+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:01:40.843+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:01:40.843+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:01:55.853+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:01:55.854+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:02:10.864+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:02:10.867+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:02:25.870+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:02:25.874+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:02:40.877+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:02:40.879+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:02:55.890+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:02:55.891+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:03:10.894+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:03:10.896+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:03:25.900+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:03:25.900+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:03:40.919+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:03:40.919+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:03:55.930+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:03:55.931+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:04:10.941+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:04:10.943+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:04:25.948+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:04:25.950+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:04:40.967+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:04:40.968+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:04:55.984+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:04:55.984+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:05:10.999+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:05:11.001+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:05:26.007+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:05:26.008+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:05:41.017+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:05:41.017+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:05:56.025+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:05:56.028+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:06:11.044+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:06:11.044+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:06:26.055+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:06:26.057+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:06:41.067+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:06:41.070+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:06:56.076+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:06:56.076+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:07:11.091+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:07:11.091+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:07:26.107+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:07:26.107+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:07:41.113+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:07:41.116+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:07:56.131+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:07:56.134+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:08:11.139+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:08:11.141+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:08:26.156+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:08:26.159+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:08:41.174+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:08:41.176+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:08:56.187+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:08:56.187+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:09:11.195+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:09:11.197+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))
+2026-06-30T02:09:26.213+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Debut du scan
+2026-06-30T02:09:26.213+03:00  INFO 8428 --- [mp3] [scheduling-1] s6.mp3.scanner.DirectoryScanner          : Fin du scan (0 nouveau(x) fichier(s))

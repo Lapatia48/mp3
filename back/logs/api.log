@@ -1,18 +1,22 @@
-2026-06-24T09:09:10.645+03:00  INFO 17712 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 17712 (L:\cours\leçons\S6\mp3\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\mp3\back)
-2026-06-24T09:09:10.683+03:00  INFO 17712 --- [mp3] [main] s6.mp3.Mp3Application                    : No active profile set, falling back to 1 default profile: "api"
-2026-06-24T09:09:12.912+03:00  INFO 17712 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-24T09:09:13.091+03:00  INFO 17712 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 153 ms. Found 3 JPA repository interfaces.
-2026-06-24T09:09:15.023+03:00  INFO 17712 --- [mp3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-06-24T09:09:15.060+03:00  INFO 17712 --- [mp3] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-24T09:09:15.061+03:00  INFO 17712 --- [mp3] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
-2026-06-24T09:09:15.126+03:00  INFO 17712 --- [mp3] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 4281 ms
-2026-06-24T09:09:15.637+03:00  INFO 17712 --- [mp3] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-06-24T09:09:15.897+03:00  INFO 17712 --- [mp3] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
-2026-06-24T09:09:17.536+03:00  INFO 17712 --- [mp3] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-24T09:09:17.654+03:00  INFO 17712 --- [mp3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-24T09:09:18.190+03:00  INFO 17712 --- [mp3] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2862271a
-2026-06-24T09:09:18.200+03:00  INFO 17712 --- [mp3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-24T09:09:18.388+03:00  INFO 17712 --- [mp3] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-06-30T01:09:07.901+03:00  INFO 12636 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 12636 (L:\cours\leçons\S6\naina\mp3-git\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\naina\mp3-git\back)
+2026-06-30T01:09:07.973+03:00  INFO 12636 --- [mp3] [main] s6.mp3.Mp3Application                    : No active profile set, falling back to 1 default profile: "api"
+2026-06-30T01:09:15.071+03:00  INFO 12636 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-30T01:09:15.400+03:00  INFO 12636 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 276 ms. Found 3 JPA repository interfaces.
+2026-06-30T01:12:08.685+03:00  INFO 8340 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 8340 (L:\cours\leçons\S6\naina\mp3-git\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\naina\mp3-git\back)
+2026-06-30T01:12:08.699+03:00  INFO 8340 --- [mp3] [main] s6.mp3.Mp3Application                    : No active profile set, falling back to 1 default profile: "api"
+2026-06-30T01:12:13.142+03:00  INFO 8340 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-30T01:12:13.430+03:00  INFO 8340 --- [mp3] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 257 ms. Found 3 JPA repository interfaces.
+2026-06-30T01:12:19.725+03:00  INFO 8340 --- [mp3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-30T01:12:19.815+03:00  INFO 8340 --- [mp3] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-30T01:12:19.818+03:00  INFO 8340 --- [mp3] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-30T01:12:19.964+03:00  INFO 8340 --- [mp3] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 11080 ms
+2026-06-30T01:12:21.574+03:00  INFO 8340 --- [mp3] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-30T01:12:22.243+03:00  INFO 8340 --- [mp3] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-06-30T01:12:25.679+03:00  INFO 8340 --- [mp3] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-30T01:12:26.653+03:00  INFO 8340 --- [mp3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-30T01:12:27.919+03:00  INFO 8340 --- [mp3] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@79c1ccf7
+2026-06-30T01:12:27.930+03:00  INFO 8340 --- [mp3] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-30T01:12:28.586+03:00  INFO 8340 --- [mp3] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://localhost:5432/mp3]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -24,35 +28,13 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-24T09:09:20.742+03:00  INFO 17712 --- [mp3] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-24T09:09:20.938+03:00  INFO 17712 --- [mp3] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-24T09:09:21.091+03:00  INFO 17712 --- [mp3] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-24T09:09:23.303+03:00  INFO 17712 --- [mp3] [main] s6.mp3.api.track.StorageService          : Stockage permanent : L:\cours\leçons\S6\mp3\back\storage
-2026-06-24T09:09:23.471+03:00  INFO 17712 --- [mp3] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2026-06-24T09:09:25.151+03:00  INFO 17712 --- [mp3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
-2026-06-24T09:09:25.157+03:00  INFO 17712 --- [mp3] [main] s6.mp3.Mp3Application                    : Started Mp3Application in 16.093 seconds (process running for 17.623)
-2026-06-24T09:09:53.163+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-24T09:09:53.165+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-24T09:09:53.172+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
-2026-06-24T09:19:41.161+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-6] s6.mp3.api.track.TrackService            : Morceau enregistre : id=7 titre=Alec Benjamin - Let Me Down Slowly [Official Music Video]
-2026-06-24T09:19:41.324+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-7] s6.mp3.api.track.TrackService            : Morceau enregistre : id=8 titre=Andro ririnina-MAHALEO
-2026-06-24T09:19:41.523+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-9] s6.mp3.api.track.TrackService            : Morceau enregistre : id=9 titre=Ao izy e !  (Dadah & Inah)
-2026-06-24T09:19:41.669+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-10] s6.mp3.api.track.TrackService            : Morceau enregistre : id=10 titre=Bodo - Dada
-2026-06-24T09:19:41.878+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-8] s6.mp3.api.track.TrackService            : Morceau enregistre : id=11 titre=CKYCKY & MAJESTY & RIM-KA - NUMBER ONE (Clip Officiel)
-2026-06-24T09:19:42.037+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-1] s6.mp3.api.track.TrackService            : Morceau enregistre : id=12 titre=ELIDIOT -  Aza latsaigny ( Clip Officiel 1080p HD )
-2026-06-24T09:19:42.308+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-2] s6.mp3.api.track.TrackService            : Morceau enregistre : id=13 titre=Eric Manana - Voninkazo adaladala
-2026-06-24T09:19:42.593+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-3] s6.mp3.api.track.TrackService            : Morceau enregistre : id=14 titre=HIARAKA ISIKA Mahaleo Live @ Olympia
-2026-06-24T09:19:42.911+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-4] s6.mp3.api.track.TrackService            : Morceau enregistre : id=15 titre=LENDREMA "MAHALEO"
-2026-06-24T09:19:43.139+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-5] s6.mp3.api.track.TrackService            : Morceau enregistre : id=16 titre=Lôla feat Stephanie - Mandramaty
-2026-06-24T09:19:43.261+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-6] s6.mp3.api.track.TrackService            : Morceau enregistre : id=17 titre=Mianatra Misintaka - Mahaleo
-2026-06-24T09:19:43.362+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-7] s6.mp3.api.track.TrackService            : Morceau enregistre : id=18 titre=Rim-Ka - KaraKaraiKo (Officiel Vidéo)
-2026-06-24T09:19:43.486+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-9] s6.mp3.api.track.TrackService            : Morceau enregistre : id=19 titre=Shyn - Angalaka Ano (Feat Quatuor Squad X Davalt Records)
-2026-06-24T09:19:43.594+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-10] s6.mp3.api.track.TrackService            : Morceau enregistre : id=20 titre=Skaiz - Hitety fotoana (Directed by Tsilavina R La St'art Project2025)
-2026-06-24T09:19:43.703+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-8] s6.mp3.api.track.TrackService            : Morceau enregistre : id=21 titre=Skaiz - Omeo ahy [Video 2016]
-2026-06-24T09:19:43.820+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-1] s6.mp3.api.track.TrackService            : Morceau enregistre : id=22 titre=Skaiz - Tsy Avelako Ho Nofy [ Official audio 2020 ]
-2026-06-24T09:19:43.990+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-2] s6.mp3.api.track.TrackService            : Morceau enregistre : id=23 titre=SOMAMBISAMBY MAHALEO
-2026-06-24T09:19:44.102+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-3] s6.mp3.api.track.TrackService            : Morceau enregistre : id=24 titre=TAA TENSE - MBOLA TIAKO HD
-2026-06-24T09:19:44.228+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-4] s6.mp3.api.track.TrackService            : Morceau enregistre : id=25 titre=TSOTA - Zava-mahery [LYRICS VIDEO] (Official audio 2019)
-2026-06-24T09:19:44.609+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-5] s6.mp3.api.track.TrackService            : Morceau enregistre : id=26 titre=VITAA & SLIMANE - Avant toi (Clip Officiel)
-2026-06-24T09:19:44.870+03:00  INFO 17712 --- [mp3] [http-nio-8080-exec-6] s6.mp3.api.track.TrackService            : Morceau enregistre : id=27 titre=VOLOLONA Mahaleo Live @ Olympia
-2026-06-24T09:50:49.029+03:00  WARN 17712 --- [mp3] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m30s9ms248µs400ns).
+2026-06-30T01:12:40.902+03:00  INFO 8340 --- [mp3] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-30T01:12:41.693+03:00  INFO 8340 --- [mp3] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-30T01:12:42.641+03:00  INFO 8340 --- [mp3] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-30T01:12:59.840+03:00  INFO 8340 --- [mp3] [main] s6.mp3.api.track.StorageService          : Stockage permanent : L:\cours\leçons\S6\naina\mp3-git\back\storage
+2026-06-30T01:13:00.247+03:00  INFO 8340 --- [mp3] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-06-30T01:13:04.494+03:00  INFO 8340 --- [mp3] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-30T01:13:04.635+03:00  INFO 8340 --- [mp3] [main] s6.mp3.Mp3Application                    : Started Mp3Application in 57.622 seconds (process running for 59.171)
+2026-06-30T01:13:21.276+03:00  INFO 8340 --- [mp3] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-30T01:13:21.278+03:00  INFO 8340 --- [mp3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-30T01:13:21.284+03:00  INFO 8340 --- [mp3] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms

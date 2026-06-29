@@ -19,10 +19,13 @@ const library = ref([])
 const criteria = reactive({
   minMinutes: 30,
   maxMinutes: 90,
-  genre: '',
+  includeGenres: [],
+  excludeGenres: [],
   includeArtists: [],
+  onlyArtists: [],
   excludeArtists: [],
   includeAlbums: [],
+  onlyAlbums: [],
   excludeAlbums: [],
 })
 const generating = ref(false)
@@ -31,12 +34,31 @@ const selection = ref([])
 
 const genres = computed(() => [...new Set(library.value.map((t) => t.genre).filter(Boolean))].sort())
 const artists = computed(() => [...new Set(library.value.map((t) => t.artist).filter(Boolean))].sort())
-const albums = computed(() => [...new Set(library.value.map((t) => t.album).filter(Boolean))].sort())
+
+// Options d'albums avec l'artiste en libelle ("Album · Artiste") : sans cela la
+// liste est illisible (plusieurs albums peuvent porter le meme nom).
+const albumOptions = computed(() => {
+  const byAlbum = new Map()
+  for (const t of library.value) {
+    if (!t.album) continue
+    if (!byAlbum.has(t.album)) byAlbum.set(t.album, new Set())
+    if (t.artist) byAlbum.get(t.album).add(t.artist)
+  }
+  return [...byAlbum.keys()]
+    .sort((a, b) => a.localeCompare(b))
+    .map((album) => {
+      const who = [...byAlbum.get(album)]
+      const tag = who.length === 0 ? '' : who.length === 1 ? who[0] : `${who.length} artistes`
+      return { value: album, label: tag ? `${album} · ${tag}` : album }
+    })
+})
 
 const minSec = computed(() => (criteria.minMinutes || 0) * 60)
 const maxSec = computed(() => (criteria.maxMinutes || 0) * 60)
 const total = computed(() => selection.value.reduce((s, t) => s + (t.duration || 0), 0))
 const matchPct = computed(() => (maxSec.value ? Math.min(100, Math.round((total.value / maxSec.value) * 100)) : 0))
+// Playlist plus courte que la cible : assume (les contraintes priment sur la duree).
+const belowTarget = computed(() => generated.value && selection.value.length > 0 && total.value < minSec.value)
 
 // Le minimum ne peut pas depasser le maximum (et inversement).
 watch(() => criteria.minMinutes, (v) => { if (v > criteria.maxMinutes) criteria.maxMinutes = v })
@@ -64,21 +86,127 @@ onMounted(async () => {
   }
 })
 
+/* ------------------------------------------------------------------ */
+/* Generation cote client : toutes les musiques sont deja chargees     */
+/* dans `library`, on applique les contraintes ici en JS (pas d'appel  */
+/* au backend pour la generation).                                     */
+/* ------------------------------------------------------------------ */
+
+// Ensemble en minuscules, sans valeurs vides.
+function lowerSet(arr) {
+  return new Set((arr || []).filter(Boolean).map((s) => String(s).trim().toLowerCase()))
+}
+// La valeur (insensible a la casse) est-elle dans l'ensemble ?
+function inSet(value, set) {
+  return value != null && set.has(String(value).toLowerCase())
+}
+function durOf(t) {
+  return t.duration && t.duration > 0 ? t.duration : 0
+}
+// Melange (Fisher–Yates) pour varier les playlists d'une fois a l'autre.
+function shuffled(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+function buildPlaylist() {
+  const minSec = (Number(criteria.minMinutes) || 0) * 60
+  const maxSec = (Number(criteria.maxMinutes) || 60) * 60
+
+  // Exclusions absolues : ces morceaux n'apparaissent jamais.
+  const exArtists = lowerSet(criteria.excludeArtists)
+  const exAlbums = lowerSet(criteria.excludeAlbums)
+  const exGenres = lowerSet(criteria.excludeGenres)
+  // Filtres / restrictions.
+  const inGenres = lowerSet(criteria.includeGenres)
+  const onlyArtists = lowerSet(criteria.onlyArtists)
+  const onlyAlbums = lowerSet(criteria.onlyAlbums)
+  // « graines » (inclus mais pas « uniquement »).
+  const incArtists = lowerSet(criteria.includeArtists)
+  const incAlbums = lowerSet(criteria.includeAlbums)
+  const softArtists = new Set([...incArtists].filter((x) => !onlyArtists.has(x)))
+  const softAlbums = new Set([...incAlbums].filter((x) => !onlyAlbums.has(x)))
+
+  // 1) Pool autorise : exclusions, genre inclus, restriction « artiste uniquement ».
+  const pool = library.value.filter((t) => {
+    if (!(t.duration > 0)) return false
+    if (inSet(t.artist, exArtists)) return false
+    if (inSet(t.album, exAlbums)) return false
+    if (inSet(t.genre, exGenres)) return false
+    if (inGenres.size && !inSet(t.genre, inGenres)) return false
+    if (onlyArtists.size && !inSet(t.artist, onlyArtists)) return false
+    return true
+  })
+
+  // 2) Albums « uniquement » : tout l'album est obligatoire.
+  const mandatory = pool.filter((t) => inSet(t.album, onlyAlbums))
+  const hasSoftSeeds = softArtists.size > 0 || softAlbums.size > 0
+  // « album uniquement » seul : on prend l'album entier et on s'arrete la.
+  const stopAfterMandatory = onlyAlbums.size > 0 && !hasSoftSeeds
+
+  // 3) Graines prioritaires puis le reste du pool (hors albums obligatoires).
+  const isSeed = (t) => inSet(t.artist, softArtists) || inSet(t.album, softAlbums)
+  const preferred = pool.filter((t) => !inSet(t.album, onlyAlbums) && isSeed(t))
+  const others = pool.filter((t) => !inSet(t.album, onlyAlbums) && !isSeed(t))
+
+  // 4) Composition.
+  const selected = []
+  const used = new Set()
+  let sum = 0
+  for (const t of mandatory) {
+    if (used.has(t.id)) continue
+    used.add(t.id)
+    selected.push(t)
+    sum += durOf(t)
+  }
+  if (stopAfterMandatory) return selected
+
+  const queue = [...shuffled(preferred), ...shuffled(others)]
+  // Remplissage glouton sans depasser le maximum.
+  for (const t of queue) {
+    if (sum >= maxSec) break
+    if (used.has(t.id)) continue
+    const d = durOf(t)
+    if (d <= 0) continue
+    if (sum + d <= maxSec) {
+      selected.push(t)
+      used.add(t.id)
+      sum += d
+    }
+  }
+  // Comble le minimum avec le morceau le plus adapte (leger depassement tolere).
+  if (sum < minSec) {
+    let best = null
+    let bestDiff = Infinity
+    const gap = minSec - sum
+    for (const t of queue) {
+      if (used.has(t.id)) continue
+      const d = durOf(t)
+      if (d <= 0) continue
+      const diff = Math.abs(gap - d)
+      if (diff < bestDiff) {
+        bestDiff = diff
+        best = t
+      }
+    }
+    if (best) selected.push(best)
+  }
+  return selected
+}
+
 async function generate() {
   generating.value = true
   try {
-    const data = await playlistsApi.generate({
-      minMinutes: Number(criteria.minMinutes) || 0,
-      maxMinutes: Number(criteria.maxMinutes) || 60,
-      genre: criteria.genre || null,
-      includeArtists: criteria.includeArtists,
-      excludeArtists: criteria.excludeArtists,
-      includeAlbums: criteria.includeAlbums,
-      excludeAlbums: criteria.excludeAlbums,
-    })
-    selection.value = [...data.tracks]
+    // Petit delai pour laisser apparaitre l'indicateur de chargement.
+    await new Promise((r) => setTimeout(r, 120))
+    const tracks = buildPlaylist()
+    selection.value = tracks
     generated.value = true
-    if (!data.tracks.length) toast.info('Aucun morceau ne correspond à ces critères')
+    if (!tracks.length) toast.info('Aucun morceau ne correspond à ces critères')
   } catch {
     toast.error('Échec de la génération')
   } finally {
@@ -161,41 +289,63 @@ const showAddPanel = ref(false)
       </div>
 
       <div class="filters">
-        <div class="field">
-          <label>Genre</label>
-          <select v-model="criteria.genre" class="select">
-            <option value="">Tous</option>
-            <option v-for="g in genres" :key="g" :value="g">{{ g }}</option>
-          </select>
+        <div class="filters-head">
+          <h3 class="filters-title">Filtres</h3>
+          <p class="legend">
+            <span class="legend-star"><AppIcon name="star" :size="11" /></span>
+            <span><b>Uniquement</b> limite la playlist à cette sélection ;
+              un album en « uniquement » est pris en entier.</span>
+          </p>
         </div>
 
-        <div class="field">
-          <label>Artistes <span class="opt">(facultatif)</span></label>
+        <!-- Genres -->
+        <div class="fgroup">
+          <div class="fgroup-title">Genres <span class="opt">facultatif</span></div>
           <div class="inc-exc">
             <div class="inc-col">
-              <span class="inc-tag inc"> Inclure</span>
-              <TagSelect v-model="criteria.includeArtists" :options="artists"
+              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+              <TagSelect v-model="criteria.includeGenres" :options="genres"
+                         add-label="+ Inclure un genre" empty-label="Tous les genres" />
+            </div>
+            <div class="inc-col">
+              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
+              <TagSelect v-model="criteria.excludeGenres" :options="genres"
+                         add-label="+ Exclure un genre" empty-label="Aucun" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Artistes -->
+        <div class="fgroup">
+          <div class="fgroup-title">Artistes <span class="opt">facultatif</span></div>
+          <div class="inc-exc">
+            <div class="inc-col">
+              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+              <TagSelect v-model="criteria.includeArtists" v-model:onlyValues="criteria.onlyArtists"
+                         :options="artists" allow-only
                          add-label="+ Inclure un artiste" empty-label="Tous les artistes" />
             </div>
             <div class="inc-col">
-              <span class="inc-tag exc"> Exclure</span>
+              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
               <TagSelect v-model="criteria.excludeArtists" :options="artists"
                          add-label="+ Exclure un artiste" empty-label="Aucun" />
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label>Albums <span class="opt">(facultatif)</span></label>
+        <!-- Albums -->
+        <div class="fgroup">
+          <div class="fgroup-title">Albums <span class="opt">facultatif</span></div>
           <div class="inc-exc">
             <div class="inc-col">
-              <span class="inc-tag inc"> Inclure</span>
-              <TagSelect v-model="criteria.includeAlbums" :options="albums"
+              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+              <TagSelect v-model="criteria.includeAlbums" v-model:onlyValues="criteria.onlyAlbums"
+                         :options="albumOptions" allow-only
                          add-label="+ Inclure un album" empty-label="Tous les albums" />
             </div>
             <div class="inc-col">
-              <span class="inc-tag exc"> Exclure</span>
-              <TagSelect v-model="criteria.excludeAlbums" :options="albums"
+              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
+              <TagSelect v-model="criteria.excludeAlbums" :options="albumOptions"
                          add-label="+ Exclure un album" empty-label="Aucun" />
             </div>
           </div>
@@ -216,8 +366,11 @@ const showAddPanel = ref(false)
           <p class="muted">{{ selection.length }} morceaux · objectif {{ criteria.minMinutes }}–{{ criteria.maxMinutes }} min</p>
         </div>
         <div class="gauge">
-          <div class="bar"><div class="fill" :style="{ width: matchPct + '%' }"></div></div>
+          <div class="bar"><div class="fill" :class="{ short: belowTarget }" :style="{ width: matchPct + '%' }"></div></div>
           <span class="dim">{{ formatTotal(total) }} · cible {{ formatTotal(minSec) }}–{{ formatTotal(maxSec) }}</span>
+          <span v-if="belowTarget" class="gauge-hint">
+            <AppIcon name="clock" :size="12" /> Durée réduite : vos contraintes priment sur la cible.
+          </span>
         </div>
         <div class="result-actions">
           <button class="btn" :disabled="!selection.length" @click="playAll"><AppIcon name="play" :size="16" /> Lire</button>
@@ -288,9 +441,31 @@ const showAddPanel = ref(false)
 .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
 .presets .chip { cursor: pointer; }
 
-.filters { display: flex; flex-direction: column; gap: 16px; }
-.filters .gen { height: 46px; }
-.opt { font-weight: 400; color: var(--muted); font-size: 12px; }
+.filters { display: flex; flex-direction: column; gap: 14px; }
+.filters .gen { height: 46px; margin-top: 2px; }
+.opt { font-weight: 400; color: var(--muted); font-size: 11px; text-transform: none; letter-spacing: 0; }
+
+.filters-head { display: flex; flex-direction: column; gap: 8px; }
+.filters-title { font-size: 18px; font-weight: 700; }
+.legend {
+  display: flex; align-items: flex-start; gap: 8px; margin: 0;
+  font-size: 12px; line-height: 1.45; color: var(--text-dim);
+  padding: 9px 11px; border-radius: var(--radius-sm);
+  background: var(--accent-soft); border: 1px solid rgba(231, 183, 101, 0.22);
+}
+.legend b { color: var(--accent); font-weight: 700; }
+.legend-star {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); color: #2a1709; margin-top: 1px;
+}
+
+.fgroup { display: flex; flex-direction: column; gap: 8px; }
+.fgroup-title {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 700; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
 
 .inc-exc { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .inc-col {
@@ -298,6 +473,7 @@ const showAddPanel = ref(false)
   padding: 12px; border-radius: var(--radius-sm);
   background: var(--bg-elev); border: 1px solid var(--border);
 }
+.inc-col:focus-within { border-color: var(--border-strong); }
 .inc-tag {
   display: inline-flex; align-items: center; gap: 5px; align-self: flex-start;
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
@@ -321,7 +497,12 @@ const showAddPanel = ref(false)
 .gauge { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 6px; }
 .gauge .bar { height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
 .gauge .fill { height: 100%; background: var(--accent-grad); border-radius: 999px; transition: width 0.4s; }
+.gauge .fill.short { background: linear-gradient(135deg, #d8743f, #c85f33); }
 .gauge span { font-size: 12px; }
+.gauge-hint {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--amber); font-weight: 500;
+}
 .result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .list { padding: 8px; }
