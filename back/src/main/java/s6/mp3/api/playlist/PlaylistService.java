@@ -50,13 +50,57 @@ public class PlaylistService {
     @Transactional(readOnly = true)
     public PlaylistDto generate(GenerateRequest req) {
         int[] range = durationRange(req);
-        // Le genre (egalite simple) reste filtre par la requete ; les listes
-        // inclure/exclure des artistes et albums sont appliquees ensuite.
-        List<Track> candidates = trackRepository.search(blankToNull(req.genre()), null, null, null)
-                .stream()
-                .filter(t -> passesFilters(t, req))
+        int minSec = range[0];
+        int maxSec = range[1];
+
+        // Exclusions absolues : ces morceaux n'apparaissent jamais.
+        Set<String> excludeArtists = lowerSet(req.excludeArtists());
+        Set<String> excludeAlbums = lowerSet(req.excludeAlbums());
+        Set<String> excludeGenres = lowerSet(req.excludeGenres());
+        // Filtres / restrictions.
+        Set<String> includeGenres = lowerSet(req.includeGenres());
+        Set<String> onlyArtists = lowerSet(req.onlyArtists());
+        Set<String> onlyAlbums = lowerSet(req.onlyAlbums());
+        // Un artiste/album marque « uniquement » est aussi implicitement inclus ;
+        // les « graines » (soft) sont les inclus restants.
+        Set<String> softArtists = minus(lowerSet(req.includeArtists()), onlyArtists);
+        Set<String> softAlbums = minus(lowerSet(req.includeAlbums()), onlyAlbums);
+
+        // Pool autorise : exclusions absolues, puis genre inclus, puis restriction
+        // « artiste uniquement ». Tout ce qui sort d'ici n'apparaitra jamais.
+        List<Track> pool = trackRepository.search(null, null, null, null).stream()
+                .filter(t -> t.getDuration() != null && t.getDuration() > 0)
+                .filter(t -> !inSet(t.getArtist(), excludeArtists))
+                .filter(t -> !inSet(t.getAlbum(), excludeAlbums))
+                .filter(t -> !inSet(t.getGenre(), excludeGenres))
+                .filter(t -> includeGenres.isEmpty() || inSet(t.getGenre(), includeGenres))
+                .filter(t -> onlyArtists.isEmpty() || inSet(t.getArtist(), onlyArtists))
                 .toList();
-        List<Track> selected = generator.generate(candidates, range[0], range[1]);
+
+        // Albums marques « uniquement » : tout l'album est obligatoire.
+        List<Track> mandatory = pool.stream()
+                .filter(t -> inSet(t.getAlbum(), onlyAlbums))
+                .toList();
+
+        boolean hasSoftSeeds = !softArtists.isEmpty() || !softAlbums.isEmpty();
+        // « album uniquement » sans autre preference : on prend l'album entier et
+        // on s'arrete la (meme si la duree visee n'est pas atteinte).
+        boolean stopAfterMandatory = !onlyAlbums.isEmpty() && !hasSoftSeeds;
+
+        // Graines (priorite) : artistes/albums inclus non « uniquement »,
+        // hors morceaux deja obligatoires.
+        List<Track> preferred = pool.stream()
+                .filter(t -> !inSet(t.getAlbum(), onlyAlbums))
+                .filter(t -> inSet(t.getArtist(), softArtists) || inSet(t.getAlbum(), softAlbums))
+                .toList();
+
+        // Le reste du pool (complement de duree quand aucune restriction stricte).
+        List<Track> others = pool.stream()
+                .filter(t -> !inSet(t.getAlbum(), onlyAlbums))
+                .filter(t -> !(inSet(t.getArtist(), softArtists) || inSet(t.getAlbum(), softAlbums)))
+                .toList();
+
+        List<Track> selected = generator.generate(mandatory, preferred, others, minSec, maxSec, stopAfterMandatory);
         List<TrackDto> tracks = selected.stream().map(TrackDto::from).toList();
         return PlaylistDto.of(null, "Playlist generee", tracks);
     }
@@ -155,8 +199,30 @@ public class PlaylistService {
         return name;
     }
 
-    private String blankToNull(String s) {
-        return (s == null || s.isBlank()) ? null : s.trim();
+    /** Normalise une liste de valeurs en ensemble minuscule (sans nul ni vide). */
+    private Set<String> lowerSet(List<String> values) {
+        if (values == null) {
+            return Set.of();
+        }
+        Set<String> out = new HashSet<>();
+        for (String v : values) {
+            if (v != null && !v.isBlank()) {
+                out.add(v.trim().toLowerCase());
+            }
+        }
+        return out;
+    }
+
+    /** Vrai si la valeur (insensible a la casse) figure dans l'ensemble. */
+    private boolean inSet(String value, Set<String> set) {
+        return value != null && set.contains(value.toLowerCase());
+    }
+
+    /** Difference ensembliste {@code a \ b} (nouvel ensemble). */
+    private Set<String> minus(Set<String> a, Set<String> b) {
+        Set<String> out = new HashSet<>(a);
+        out.removeAll(b);
+        return out;
     }
 
     /** Convertit les criteres en fourchette {@code [minSeconds, maxSeconds]}. */
@@ -176,29 +242,5 @@ public class PlaylistService {
             minSec = tmp;
         }
         return new int[]{minSec, maxSec};
-    }
-
-    /** Verifie qu'un morceau respecte les listes inclure/exclure (artiste, album). */
-    private boolean passesFilters(Track t, GenerateRequest req) {
-        return matchesInclude(t.getArtist(), req.includeArtists())
-                && !matchesExclude(t.getArtist(), req.excludeArtists())
-                && matchesInclude(t.getAlbum(), req.includeAlbums())
-                && !matchesExclude(t.getAlbum(), req.excludeAlbums());
-    }
-
-    /** Inclusion : liste vide => tout accepte ; sinon la valeur doit y figurer. */
-    private boolean matchesInclude(String value, List<String> include) {
-        if (include == null || include.isEmpty()) {
-            return true;
-        }
-        return value != null && include.stream().anyMatch(v -> v.equalsIgnoreCase(value));
-    }
-
-    /** Exclusion : vrai si la valeur figure dans la liste (donc a ecarter). */
-    private boolean matchesExclude(String value, List<String> exclude) {
-        if (exclude == null || exclude.isEmpty() || value == null) {
-            return false;
-        }
-        return exclude.stream().anyMatch(v -> v.equalsIgnoreCase(value));
     }
 }
