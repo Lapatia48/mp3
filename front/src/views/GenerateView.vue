@@ -250,6 +250,21 @@ async function save() {
 }
 
 const showAddPanel = ref(false)
+const searchAdd = ref('')
+const filteredCandidates = computed(() => {
+  const q = searchAdd.value.trim().toLowerCase()
+  if (!q) return candidates.value
+  return candidates.value.filter(
+    (t) =>
+      (t.title && t.title.toLowerCase().includes(q)) ||
+      (t.artist && t.artist.toLowerCase().includes(q)) ||
+      (t.album && t.album.toLowerCase().includes(q)),
+  )
+})
+function closeAddPanel() {
+  showAddPanel.value = false
+  searchAdd.value = ''
+}
 </script>
 
 <template>
@@ -289,28 +304,21 @@ const showAddPanel = ref(false)
       </div>
 
       <div class="filters">
-        <div class="filters-head">
-          <h3 class="filters-title">Filtres</h3>
-          <p class="legend">
-            <span class="legend-star"><AppIcon name="star" :size="11" /></span>
-            <span><b>Uniquement</b> limite la playlist à cette sélection ;
-              un album en « uniquement » est pris en entier.</span>
-          </p>
-        </div>
+        <h3 class="filters-title">Filtres</h3>
 
         <!-- Genres -->
         <div class="fgroup">
           <div class="fgroup-title">Genres <span class="opt">facultatif</span></div>
-          <div class="inc-exc">
-            <div class="inc-col">
-              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+          <div class="constraint-grid">
+            <div class="constraint-col constraint-inc">
+              <div class="constraint-head">Inclure</div>
               <TagSelect v-model="criteria.includeGenres" :options="genres"
-                         add-label="+ Inclure un genre" empty-label="Tous les genres" />
+                         add-label="Rechercher un genre…" empty-label="Tous les genres" />
             </div>
-            <div class="inc-col">
-              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
+            <div class="constraint-col constraint-exc">
+              <div class="constraint-head">Exclure</div>
               <TagSelect v-model="criteria.excludeGenres" :options="genres"
-                         add-label="+ Exclure un genre" empty-label="Aucun" />
+                         add-label="Rechercher un genre…" empty-label="Aucun" />
             </div>
           </div>
         </div>
@@ -318,17 +326,17 @@ const showAddPanel = ref(false)
         <!-- Artistes -->
         <div class="fgroup">
           <div class="fgroup-title">Artistes <span class="opt">facultatif</span></div>
-          <div class="inc-exc">
-            <div class="inc-col">
-              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+          <div class="constraint-grid">
+            <div class="constraint-col constraint-inc">
+              <div class="constraint-head">Inclure</div>
               <TagSelect v-model="criteria.includeArtists" v-model:onlyValues="criteria.onlyArtists"
                          :options="artists" allow-only
-                         add-label="+ Inclure un artiste" empty-label="Tous les artistes" />
+                         add-label="Rechercher un artiste…" empty-label="Tous les artistes" />
             </div>
-            <div class="inc-col">
-              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
+            <div class="constraint-col constraint-exc">
+              <div class="constraint-head">Exclure</div>
               <TagSelect v-model="criteria.excludeArtists" :options="artists"
-                         add-label="+ Exclure un artiste" empty-label="Aucun" />
+                         add-label="Rechercher un artiste…" empty-label="Aucun" />
             </div>
           </div>
         </div>
@@ -336,17 +344,17 @@ const showAddPanel = ref(false)
         <!-- Albums -->
         <div class="fgroup">
           <div class="fgroup-title">Albums <span class="opt">facultatif</span></div>
-          <div class="inc-exc">
-            <div class="inc-col">
-              <span class="inc-tag inc"><AppIcon name="plus" :size="11" /> Inclure</span>
+          <div class="constraint-grid">
+            <div class="constraint-col constraint-inc">
+              <div class="constraint-head">Inclure</div>
               <TagSelect v-model="criteria.includeAlbums" v-model:onlyValues="criteria.onlyAlbums"
                          :options="albumOptions" allow-only
-                         add-label="+ Inclure un album" empty-label="Tous les albums" />
+                         add-label="Rechercher un album…" empty-label="Tous les albums" />
             </div>
-            <div class="inc-col">
-              <span class="inc-tag exc"><AppIcon name="close" :size="11" /> Exclure</span>
+            <div class="constraint-col constraint-exc">
+              <div class="constraint-head">Exclure</div>
               <TagSelect v-model="criteria.excludeAlbums" :options="albumOptions"
-                         add-label="+ Exclure un album" empty-label="Aucun" />
+                         add-label="Rechercher un album…" empty-label="Aucun" />
             </div>
           </div>
         </div>
@@ -393,20 +401,33 @@ const showAddPanel = ref(false)
         />
       </div>
       <div v-else class="empty card">
-        <div class="empty-disc">🎚️</div>
+        <div class="empty-disc"><AppIcon name="sliders" :size="40" /></div>
         <p class="muted">Aucun morceau retenu. Ajoutez-en manuellement ou changez les critères.</p>
         <button class="btn" @click="showAddPanel = true"><AppIcon name="plus" :size="16" /> Ajouter des morceaux</button>
       </div>
     </section>
 
     <!-- Panneau d'ajout -->
-    <AppModal v-if="showAddPanel" title="Ajouter des morceaux" @close="showAddPanel = false">
-      <div v-if="candidates.length" class="add-list">
-        <TrackRow v-for="t in candidates" :key="t.id" :track="t" can-add @add="addTrack" />
+    <AppModal v-if="showAddPanel" title="Ajouter des morceaux" @close="closeAddPanel">
+      <div class="add-search">
+        <AppIcon name="search" :size="14" class="add-search-ico" />
+        <input
+          v-model="searchAdd"
+          type="text"
+          placeholder="Rechercher par titre, artiste, album…"
+          class="add-search-inp"
+          autocomplete="off"
+        />
       </div>
-      <p v-else class="muted">Tous les morceaux de la bibliothèque sont déjà dans la playlist.</p>
+      <div v-if="filteredCandidates.length" class="add-list">
+        <TrackRow v-for="t in filteredCandidates" :key="t.id" :track="t" can-add @add="addTrack" />
+      </div>
+      <p v-else class="muted">
+        <template v-if="searchAdd">Aucun résultat pour « {{ searchAdd }} ».</template>
+        <template v-else>Tous les morceaux de la bibliothèque sont déjà dans la playlist.</template>
+      </p>
       <template #footer>
-        <button class="btn btn-primary" @click="showAddPanel = false">Terminé</button>
+        <button class="btn btn-primary" @click="closeAddPanel">Terminé</button>
       </template>
     </AppModal>
 
@@ -441,45 +462,38 @@ const showAddPanel = ref(false)
 .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
 .presets .chip { cursor: pointer; }
 
-.filters { display: flex; flex-direction: column; gap: 14px; }
+.filters { display: flex; flex-direction: column; gap: 16px; }
 .filters .gen { height: 46px; margin-top: 2px; }
 .opt { font-weight: 400; color: var(--muted); font-size: 11px; text-transform: none; letter-spacing: 0; }
 
-.filters-head { display: flex; flex-direction: column; gap: 8px; }
-.filters-title { font-size: 18px; font-weight: 700; }
-.legend {
-  display: flex; align-items: flex-start; gap: 8px; margin: 0;
-  font-size: 12px; line-height: 1.45; color: var(--text-dim);
-  padding: 9px 11px; border-radius: var(--radius-sm);
-  background: var(--accent-soft); border: 1px solid rgba(231, 183, 101, 0.22);
-}
-.legend b { color: var(--accent); font-weight: 700; }
-.legend-star {
-  display: inline-flex; align-items: center; justify-content: center; flex: none;
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--accent); color: #2a1709; margin-top: 1px;
-}
+.filters-title { font-size: 18px; font-weight: 700; margin: 0; }
 
-.fgroup { display: flex; flex-direction: column; gap: 8px; }
+.fgroup {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg-elev);
+}
 .fgroup-title {
   display: flex; align-items: center; gap: 7px;
-  font-size: 13px; font-weight: 700; color: var(--text-dim);
-  text-transform: uppercase; letter-spacing: 0.5px;
+  font-size: 11px; font-weight: 800; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.8px;
 }
 
-.inc-exc { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.inc-col {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 12px; border-radius: var(--radius-sm);
-  background: var(--bg-elev); border: 1px solid var(--border);
+.constraint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.constraint-col {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 14px; border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-top-width: 2px;
 }
-.inc-col:focus-within { border-color: var(--border-strong); }
-.inc-tag {
-  display: inline-flex; align-items: center; gap: 5px; align-self: flex-start;
-  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+.constraint-inc { border-top-color: var(--ok); }
+.constraint-exc { border-top-color: var(--danger); }
+.constraint-head {
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
 }
-.inc-tag.inc { color: var(--ok); }
-.inc-tag.exc { color: var(--danger); }
+.constraint-inc .constraint-head { color: var(--ok); }
+.constraint-exc .constraint-head { color: var(--danger); }
 
 .range {
   -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px;
@@ -508,10 +522,24 @@ const showAddPanel = ref(false)
 .list { padding: 8px; }
 .add-list { max-height: 50vh; overflow-y: auto; }
 .empty { text-align: center; padding: 44px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.empty-disc { font-size: 44px; }
+.empty-disc { color: var(--text-dim); }
+
+.add-search {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 12px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg-elev);
+  transition: border-color 0.15s;
+}
+.add-search:focus-within { border-color: var(--border-strong); }
+.add-search-ico { color: var(--text-dim); flex: none; }
+.add-search-inp {
+  flex: 1; border: none; background: transparent; outline: none;
+  font-size: 14px; color: var(--text);
+}
+.add-search-inp::placeholder { color: var(--text-dim); }
 
 @media (max-width: 820px) {
   .criteria { grid-template-columns: 1fr; }
-  .inc-exc { grid-template-columns: 1fr; }
+  .constraint-grid { grid-template-columns: 1fr; }
 }
 </style>

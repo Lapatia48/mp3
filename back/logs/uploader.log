@@ -1,5 +1,0 @@
-2026-06-30T01:12:39.915+03:00  INFO 17112 --- [mp3] [main] s6.mp3.Mp3Application                    : Starting Mp3Application v0.0.1-SNAPSHOT using Java 17.0.12 with PID 17112 (L:\cours\leçons\S6\naina\mp3-git\back\target\mp3-0.0.1-SNAPSHOT.jar started by Lapatia in L:\cours\leçons\S6\naina\mp3-git\back)
-2026-06-30T01:12:40.170+03:00  INFO 17112 --- [mp3] [main] s6.mp3.Mp3Application                    : The following 1 profile is active: "uploader"
-2026-06-30T01:12:57.770+03:00  INFO 17112 --- [mp3] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2026-06-30T01:12:58.443+03:00  INFO 17112 --- [mp3] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5b7c8930:0/SimpleConnection@276cc8dc [delegate=amqp://guest@127.0.0.1:5672/, localPort=63659]
-2026-06-30T01:12:59.225+03:00  INFO 17112 --- [mp3] [main] s6.mp3.Mp3Application                    : Started Mp3Application in 25.049 seconds (process running for 28.734)
