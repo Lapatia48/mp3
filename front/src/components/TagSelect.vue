@@ -1,24 +1,17 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import AppIcon from './AppIcon.vue'
 
-// Liste editable de valeurs (puces) avec un petit selecteur "+ Ajouter".
-// Utilise pour les filtres inclure / exclure (artistes, albums, genres).
-// Les options acceptent soit une chaine, soit un objet { value, label } afin
-// d'afficher un libelle lisible (ex. « Album · Artiste ») tout en gardant une
-// valeur simple. Avec `allowOnly`, chaque puce expose un bouton « uniquement »
-// (v-model:onlyValues) qui marque la valeur comme exclusive.
 const props = defineProps({
   modelValue: { type: Array, default: () => [] },
   options: { type: Array, default: () => [] },
-  addLabel: { type: String, default: '+ Ajouter' },
+  addLabel: { type: String, default: 'Rechercher…' },
   emptyLabel: { type: String, default: '' },
   allowOnly: { type: Boolean, default: false },
   onlyValues: { type: Array, default: () => [] },
 })
 const emit = defineEmits(['update:modelValue', 'update:onlyValues'])
 
-// Normalise les options en { value, label }.
 const normalized = computed(() =>
   props.options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o)),
 )
@@ -31,25 +24,40 @@ function labelFor(v) {
   return labelMap.value.get(v) ?? v
 }
 
-// Options encore disponibles (non deja choisies).
 const available = computed(() => normalized.value.filter((o) => !props.modelValue.includes(o.value)))
 
-function add(e) {
-  const v = e.target.value
-  if (v && !props.modelValue.includes(v)) {
+const search = ref('')
+const open = ref(false)
+
+const filtered = computed(() => {
+  const q = search.value.trim().toLowerCase()
+  if (!q) return available.value
+  return available.value.filter((o) => o.label.toLowerCase().includes(q))
+})
+
+function pick(v) {
+  if (!props.modelValue.includes(v)) {
     emit('update:modelValue', [...props.modelValue, v])
   }
-  e.target.value = ''
+  search.value = ''
+  open.value = false
 }
+
+function onBlur() {
+  setTimeout(() => {
+    open.value = false
+    search.value = ''
+  }, 160)
+}
+
 function remove(v) {
   emit('update:modelValue', props.modelValue.filter((x) => x !== v))
   if (props.allowOnly && props.onlyValues.includes(v)) {
     emit('update:onlyValues', props.onlyValues.filter((x) => x !== v))
   }
 }
-function isOnly(v) {
-  return props.onlyValues.includes(v)
-}
+
+function isOnly(v) { return props.onlyValues.includes(v) }
 function toggleOnly(v) {
   if (isOnly(v)) emit('update:onlyValues', props.onlyValues.filter((x) => x !== v))
   else emit('update:onlyValues', [...props.onlyValues, v])
@@ -80,19 +88,40 @@ function toggleOnly(v) {
     </div>
     <p v-else-if="emptyLabel" class="tag-empty muted">{{ emptyLabel }}</p>
 
-    <select v-if="available.length" class="select tag-add" @change="add">
-      <option value="">{{ addLabel }}</option>
-      <option v-for="o in available" :key="o.value" :value="o.value">{{ o.label }}</option>
-    </select>
+    <div v-if="available.length" class="search-wrap">
+      <div class="search-field" :class="{ focused: open }">
+        <AppIcon name="search" :size="13" class="search-ico" />
+        <input
+          v-model="search"
+          type="text"
+          :placeholder="addLabel"
+          class="search-inp"
+          autocomplete="off"
+          @focus="open = true"
+          @blur="onBlur"
+        />
+      </div>
+      <div v-if="open" class="dropdown">
+        <button
+          v-for="o in filtered"
+          :key="o.value"
+          type="button"
+          class="drop-item"
+          @mousedown.prevent="pick(o.value)"
+        >{{ o.label }}</button>
+        <p v-if="!filtered.length" class="drop-empty">Aucun résultat</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.tag-select { display: flex; flex-direction: column; gap: 8px; }
+.tag-select { display: flex; flex-direction: column; gap: 8px; position: relative; }
+
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 6px 5px 8px; border-radius: 999px;
+  padding: 4px 6px 4px 8px; border-radius: 999px;
   background: var(--surface-2); border: 1px solid var(--border);
   font-size: 12px; color: var(--text); font-weight: 500;
 }
@@ -112,10 +141,42 @@ function toggleOnly(v) {
 .tag-x {
   display: inline-flex; align-items: center; justify-content: center;
   width: 18px; height: 18px; padding: 0; border: none; border-radius: 50%;
-  background: var(--surface-3); color: var(--text-dim); cursor: pointer;
+  background: transparent; color: var(--text-dim); cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
 .tag-x:hover { background: var(--danger); color: #fff; }
 .tag-empty { font-size: 12px; font-style: italic; margin: 0; }
-.tag-add { font-size: 13px; padding: 9px 12px; }
+
+.search-wrap { position: relative; }
+.search-field {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: border-color 0.15s;
+}
+.search-field.focused { border-color: var(--border-strong); }
+.search-ico { color: var(--text-dim); flex: none; }
+.search-inp {
+  flex: 1; border: none; background: transparent; outline: none;
+  font-size: 13px; color: var(--text);
+}
+.search-inp::placeholder { color: var(--text-dim); }
+
+.dropdown {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+  z-index: 60; max-height: 210px; overflow-y: auto;
+  background: var(--bg-elev); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.drop-item {
+  display: block; width: 100%; text-align: left;
+  padding: 9px 14px; font-size: 13px; color: var(--text);
+  border: none; background: transparent; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+.drop-item:last-child { border-bottom: none; }
+.drop-item:hover { background: var(--surface-2); }
+.drop-empty { padding: 10px 14px; font-size: 13px; color: var(--text-dim); font-style: italic; margin: 0; }
 </style>
