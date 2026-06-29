@@ -1,0 +1,192 @@
+================================================================================
+              CAHIER DES CHARGES
+   PROJET DE GESTION DE MUSIQUE ET GENERATION DE PLAYLISTS
+================================================================================
+
+Date          : 2026-06-18
+Stack technique : Spring Boot (backend / API) + Vue.js (frontend web)
+Middleware    : RabbitMQ (communication asynchrone entre programmes)
+Base de donnees : Relationnelle (PostgreSQL ou MySQL)
+
+
+--------------------------------------------------------------------------------
+1. OBJECTIF GENERAL
+--------------------------------------------------------------------------------
+Le systeme doit traiter automatiquement les fichiers MP3 deposes dans un
+repertoire d'import, en extraire les metadonnees, les stocker via une API,
+puis permettre a des utilisateurs de generer, sauvegarder et utiliser des
+playlists via une application web.
+
+Le traitement automatique est decoupe en trois programmes standalone
+independants communiquant exclusivement via RabbitMQ.
+
+Flux global :
+  1. Detection des nouveaux MP3.
+  2. Extraction des metadonnees.
+  3. Envoi du MP3 et des metadonnees a une API.
+  4. Stockage du fichier et des metadonnees par l'API.
+  5. Suppression du fichier du repertoire d'import apres succes.
+
+
+--------------------------------------------------------------------------------
+2. PERIMETRE FONCTIONNEL
+--------------------------------------------------------------------------------
+
+2.1 PARTIE BACKEND - APPLICATIONS STANDALONE
+--------------------------------------------------------------------------------
+
+  PROGRAMME 1 : SCANNER DE REPERTOIRE
+  - Surveiller le repertoire d'import "incoming/".
+  - Lire periodiquement son contenu (ex : toutes les 5 minutes).
+  - Ne traiter que les fichiers .mp3, ignorer les autres.
+  - Detecter les nouveaux morceaux ajoutes depuis le dernier scan.
+  - Sortie : nom + chemin absolu de chaque MP3 detecte.
+  - Publier la liste dans une file RabbitMQ dediee (Queue Scan).
+
+  PROGRAMME 2 : EXTRACTEUR DE METADONNEES
+  - Consommer les messages de la Queue Scan.
+  - Extraire via une bibliotheque specialisee (jaudiotagger ou mp3agic) :
+      Titre, Artiste, Album, Genre, Duree, Annee, Date,
+      et toute autre metadonnee disponible.
+  - Sortie JSON par fichier :
+      {
+        "path": "C:/incoming/song1.mp3",
+        "title": "Imagine",
+        "artist": "John Lennon",
+        "album": "Imagine",
+        "genre": "Rock",
+        "duration": 183
+      }
+  - Publier dans une autre file RabbitMQ (Queue Metadata).
+
+  PROGRAMME 3 : UPLOADER API
+  - Consommer les messages de la Queue Metadata.
+  - Appeler l'API en envoyant le fichier MP3 + ses metadonnees.
+  - En cas de SUCCES :
+      * L'API enregistre les metadonnees en base.
+      * L'API copie le MP3 dans le stockage permanent.
+      * Le programme supprime le fichier du repertoire incoming.
+  - En cas d'ECHEC :
+      * Le fichier n'est pas supprime.
+      * Une ou plusieurs tentatives de reenvoi sont effectuees.
+      * Si toutes echouent : deplacer le fichier dans "failed/".
+
+
+2.2 API BACKEND
+--------------------------------------------------------------------------------
+  - Recevoir les fichiers MP3 et leurs metadonnees.
+  - Stocker les metadonnees en base de donnees.
+  - Conserver une copie permanente du fichier MP3 (stockage permanent).
+  - Fournir les donnees necessaires a l'application web.
+  - Remarque : "incoming/" est uniquement temporaire. Les MP3 utilises par
+    le web proviennent du stockage permanent gere par l'API.
+
+
+2.3 PARTIE WEB
+--------------------------------------------------------------------------------
+  AUTHENTIFICATION
+  - Login utilisateur.
+  - Gestion des comptes utilisateurs.
+
+  GESTION DES MP3 (CRUD complet)
+  - Ajouter, consulter, modifier, supprimer un MP3.
+
+  INTERFACE 1 : GENERATION DE PLAYLIST
+  - L'utilisateur definit des criteres :
+      Duree totale souhaitee, Genre, Artiste, Album, autres criteres.
+  - Le systeme propose une playlist dont la somme des durees est proche
+    ou egale a la duree demandee (ex : 60 minutes).
+  - Apres generation, l'utilisateur peut ajouter / retirer des morceaux,
+    et modifier librement la playlist meme si la duree n'est plus respectee.
+
+  INTERFACE 2 : SAUVEGARDE DE PLAYLIST
+  - Apres generation ou modification, l'utilisateur peut enregistrer.
+
+  INTERFACE 3 : GESTION DES PLAYLISTS
+  - Voir ses playlists enregistrees.
+  - Actions : Lecture des morceaux ; Telechargement de tous les morceaux
+    dans une archive ZIP (playlist.zip).
+
+
+--------------------------------------------------------------------------------
+3. COMMUNICATION ENTRE PROGRAMMES
+--------------------------------------------------------------------------------
+Les programmes ne communiquent jamais directement. Tout passe par RabbitMQ.
+
+  Programme 1 : Scan MP3            -> Queue Scan
+  Programme 2 : Queue Scan          -> Extraction -> Queue Metadata
+  Programme 3 : Queue Metadata      -> Envoi API
+
+Chaque programme :
+  - Ecoute uniquement sa propre queue.
+  - Consomme les messages qui lui sont destines.
+  - Produit un nouveau message pour le programme suivant.
+Architecture asynchrone et decouplee.
+
+
+--------------------------------------------------------------------------------
+4. GESTION DES LOGS
+--------------------------------------------------------------------------------
+Les trois programmes doivent ecrire dans un fichier de log contenant :
+  - Les actions realisees.
+  - Les erreurs rencontrees.
+  - Les exceptions.
+
+Exemples :
+  Prog 1 : 10:00 Debut du scan
+           10:01 Nouveau fichier detecte : song1.mp3
+  Prog 2 : 10:02 Debut extraction : song1.mp3
+           10:02 Metadonnees extraites avec succes
+  Prog 3 : 10:03 Debut envoi API : song1.mp3
+           10:03 Envoi en cours
+           10:04 Envoi termine avec succes
+           10:04 Suppression du fichier source
+
+
+--------------------------------------------------------------------------------
+5. EXIGENCES TECHNIQUES
+--------------------------------------------------------------------------------
+  - Backend / API           : Java 17+, Spring Boot 3.x, Maven ou Gradle.
+  - Programmes standalone   : Spring Boot (mode application non-web) ou
+                              applications Java autonomes.
+  - Messagerie              : RabbitMQ (spring-amqp / spring-boot-starter-amqp).
+  - Metadonnees MP3         : jaudiotagger ou mp3agic.
+  - Base de donnees         : PostgreSQL ou MySQL via Spring Data JPA.
+  - Securite                : Spring Security + JWT pour l'authentification.
+  - Frontend                : Vue.js 3 (Vite), Vue Router, Pinia, Axios.
+  - Logs                    : SLF4J + Logback (fichier de log par programme).
+  - Archive ZIP             : generation cote API/web.
+  - Conteneurisation (option) : Docker / docker-compose (RabbitMQ + DB + apps).
+
+
+--------------------------------------------------------------------------------
+6. EXIGENCES NON FONCTIONNELLES
+--------------------------------------------------------------------------------
+  - Robustesse : reprise sur erreur, reessais, gestion des fichiers en echec.
+  - Idempotence : ne pas reimporter deux fois le meme fichier.
+  - Tracabilite : journalisation complete de chaque etape.
+  - Decouplage : programmes independants via RabbitMQ.
+  - Securite : acces web protege par authentification.
+  - Performance : scan periodique non bloquant.
+
+
+--------------------------------------------------------------------------------
+7. LIVRABLES
+--------------------------------------------------------------------------------
+  - 3 programmes standalone (Scanner, Extracteur, Uploader).
+  - 1 API Backend Spring Boot.
+  - 1 application web Vue.js.
+  - Base de donnees + scripts de creation.
+  - Configuration RabbitMQ (queues).
+  - Fichiers de logs.
+  - Documentation (ce cahier des charges + 3 fichiers de decoupage).
+
+
+--------------------------------------------------------------------------------
+8. DECOUPAGE DU PROJET (voir fichiers detailles)
+--------------------------------------------------------------------------------
+  01-backend-standalone.md : Les 3 programmes + RabbitMQ.
+  02-api-backend.md        : API Spring Boot + base de donnees + stockage.
+  03-web-frontend.md       : Application web Vue.js (auth, CRUD, playlists).
+
+================================================================================
