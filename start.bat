@@ -72,8 +72,8 @@ start "Vinylia - Web" /D "%FRONT%" cmd /k npm run dev
 timeout /t 8 /nobreak >nul
 
 REM --- 5. Navigateur ---
-echo [5/5] Ouverture du navigateur...
-start "" http://localhost:5173
+@REM echo [5/5] Ouverture du navigateur...
+@REM start "" http://localhost:5173
 
 echo.
 echo ============================================

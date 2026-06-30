@@ -6,7 +6,8 @@ Date : 2026-06-30 · Stack inchangée (Spring Boot 4.1 + RabbitMQ côté back, V
 Ce document couvre deux évolutions postérieures à la livraison initiale :
 
 1. la **génération de playlist 100 % côté client** (nouveau JS dans `GenerateView.vue`) ;
-2. la **liste noire d'artistes** (`blacklist/blacklist.txt`) appliquée à l'import.
+2. la **liste noire d'import** par artiste (`blacklist/artiste.txt`) et par genre
+   (`blacklist/genre.txt`).
 
 ---
 
@@ -63,26 +64,30 @@ par `id` (`used`).
 
 ---
 
-## 2. Liste noire d'artistes (blacklist)
+## 2. Liste noire d'import (artistes & genres)
 
 ### 2.1 Objectif
 
-Empêcher l'import des morceaux de certains artistes. Les fichiers concernés ne sont
-**pas** envoyés à l'API : ils sont **mis de côté** dans un dossier `blacklisted/`.
+Empêcher l'import des morceaux de certains **artistes** ou de certains **genres**.
+Les fichiers concernés ne sont **pas** envoyés à l'API : ils sont **mis de côté** dans
+`blacklisted/`, dans un **sous-dossier** selon la cause (`artistes/` ou `genres/`).
 
-### 2.2 Le fichier `back/blacklist/blacklist.txt`
+### 2.2 Les fichiers `back/blacklist/`
 
-À côté de `back/incoming/`, un dossier `blacklist/` contient `blacklist.txt` :
-un **artiste par ligne**.
+À côté de `back/incoming/`, le dossier `blacklist/` contient **deux** listes — un
+**motif par ligne**, même logique pour les deux :
 
-- Comparaison **insensible à la casse** et par **sous-chaîne** :
-  `skaiz` bloque `Skaiz Official`, `mahaleo` bloque `Mahaleo Officiel`,
-  `Ny Ando Fanantenana Ratsimikatry`, `Mianatra Misintaka - Mahaleo`…
+| Fichier | Bloque selon le champ | Exemple |
+|---|---|---|
+| `blacklist/artiste.txt` | **artiste** | `skaiz` → `Skaiz Official` |
+| `blacklist/genre.txt` | **genre** | `rock` → `Pop-Rock` |
+
+- Comparaison **insensible à la casse** et par **sous-chaîne**.
 - Lignes **vides** et lignes commençant par `#` (commentaires) **ignorées**.
-- Le fichier est **rechargé automatiquement** s'il a été modifié (basé sur la date de
-  dernière modification) — pas besoin de redémarrer le programme pour ajouter un artiste.
+- Chaque fichier est **rechargé automatiquement** s'il a été modifié (basé sur la date
+  de dernière modification) — pas besoin de redémarrer le programme pour ajouter une entrée.
 
-Exemple :
+Exemple `artiste.txt` :
 ```
 skaiz
 mahaleo
@@ -90,14 +95,15 @@ mahaleo
 
 ### 2.3 Où la règle s'applique — l'Extracteur (Programme 2)
 
-L'artiste n'est connu **qu'après extraction** des métadonnées. La règle est donc
-appliquée dans l'**Extracteur** (`MetadataExtractor`), juste avant la publication
-vers `queue.metadata` :
+Artiste et genre ne sont connus **qu'après extraction** des métadonnées. La règle est
+donc appliquée dans l'**Extracteur** (`MetadataExtractor`), juste avant la publication
+vers `queue.metadata`. L'**artiste est testé en premier**, puis le genre :
 
 ```
-[Scanner] ─► queue.scan ─► [Extracteur] ─► artiste blacklisté ?
-                                              ├─ oui ─► déplace vers blacklisted/  (stop)
-                                              └─ non ─► publie vers queue.metadata ─► [Uploader] ─► API
+[Scanner] ─► queue.scan ─► [Extracteur] ─► artiste ou genre blacklisté ?
+                                              ├─ artiste ─► blacklisted/artistes/  (stop)
+                                              ├─ genre   ─► blacklisted/genres/    (stop)
+                                              └─ non     ─► queue.metadata ─► [Uploader] ─► API
 ```
 
 Conséquence : un morceau blacklisté **ne génère aucun message** pour l'Uploader, n'est
@@ -107,23 +113,26 @@ jamais envoyé à l'API et n'apparaît pas dans la bibliothèque.
 
 | Élément | Détail |
 |---|---|
-| `back/blacklist/blacklist.txt` | la liste (un artiste par ligne) |
-| `extractor/BlacklistFilter.java` | charge le fichier, expose `isBlacklisted(artist)`, recharge à chaud |
-| `extractor/MetadataExtractor.java` | teste l'artiste ; si bloqué → `moveToBlacklisted(file)` |
-| `back/blacklisted/` | dossier de destination (créé automatiquement au besoin) |
+| `back/blacklist/artiste.txt` | liste des artistes bloqués |
+| `back/blacklist/genre.txt` | liste des genres bloqués |
+| `extractor/BlacklistFilter.java` | charge les 2 listes, expose `check(artist, genre)` → `Reason` (ARTIST / GENRE / null), recharge à chaud |
+| `extractor/MetadataExtractor.java` | teste le morceau ; si bloqué → `moveToBlacklisted(file, sous-dossier)` |
+| `back/blacklisted/artistes/`, `back/blacklisted/genres/` | dossiers de destination (créés automatiquement au besoin) |
 
 Propriétés (`application.properties`, surchargables en CLI) :
 ```properties
-app.blacklist-file=blacklist/blacklist.txt
+app.blacklist-artist-file=blacklist/artiste.txt
+app.blacklist-genre-file=blacklist/genre.txt
 app.blacklisted-dir=blacklisted
 ```
 
 ### 2.5 Logs (profil `extractor`)
 
-- Au démarrage / rechargement : `Liste noire chargee : N artiste(s) bloque(s) depuis …`.
+- Au démarrage / rechargement : `Liste noire (artistes) chargee : N entree(s) depuis …`
+  (idem pour `genres`).
 - Sur un morceau bloqué :
-  `Artiste sur liste noire : Skaiz Official (fichier.mp3) -> non importe`
-  puis `Fichier blackliste deplace vers : …/blacklisted/fichier.mp3`.
+  `Sur liste noire (artistes) : Skaiz Official (fichier.mp3) -> non importe`
+  puis `Fichier blackliste deplace vers : …/blacklisted/artistes/fichier.mp3`.
 
 ### 2.6 Exemple sur la bibliothèque du sujet
 

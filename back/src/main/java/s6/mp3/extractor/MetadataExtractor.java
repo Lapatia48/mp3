@@ -86,10 +86,14 @@ public class MetadataExtractor {
                 out.setTitle(stripExtension(msg.getFileName()));
             }
 
-            // Liste noire : artiste bloque -> on n'importe pas, on met de cote.
-            if (blacklist.isBlacklisted(out.getArtist())) {
-                log.info("Artiste sur liste noire : {} ({}) -> non importe", out.getArtist(), msg.getFileName());
-                moveToBlacklisted(file);
+            // Liste noire (artiste ou genre) : si bloque, on n'importe pas et on
+            // met le fichier de cote dans le sous-dossier correspondant.
+            BlacklistFilter.Reason reason = blacklist.check(out.getArtist(), out.getGenre());
+            if (reason != null) {
+                String cause = reason == BlacklistFilter.Reason.ARTIST ? out.getArtist() : out.getGenre();
+                log.info("Sur liste noire ({}) : {} ({}) -> non importe",
+                        reason.subdir(), cause, msg.getFileName());
+                moveToBlacklisted(file, reason.subdir());
                 return;
             }
 
@@ -100,10 +104,13 @@ public class MetadataExtractor {
         }
     }
 
-    /** Deplace le fichier d'un artiste blackliste vers le dossier {@code blacklisted/}. */
-    private void moveToBlacklisted(File file) {
+    /**
+     * Deplace un fichier blackliste vers {@code blacklisted/<subdir>/}
+     * ({@code subdir} = {@code artistes} ou {@code genres}).
+     */
+    private void moveToBlacklisted(File file, String subdir) {
         try {
-            File dir = new File(blacklistedDir).getAbsoluteFile();
+            File dir = new File(blacklistedDir, subdir).getAbsoluteFile();
             if (!dir.exists() && !dir.mkdirs()) {
                 log.error("Impossible de creer le dossier blacklisted : {}", dir.getAbsolutePath());
                 return;
