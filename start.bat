@@ -22,12 +22,17 @@ echo    VINYLIA - Demarrage complet
 echo ============================================
 echo.
 
-REM --- 0. Build backend si le jar n'existe pas ---
+REM --- 0. Build backend (toujours) pour embarquer les dernieres modifs du code ---
+REM    (avant : build uniquement si le jar etait absent -> les changements de code
+REM     n'etaient jamais repackages, le jar restait perime).
+echo [build] Construction du backend ^(Maven^), patientez...
+pushd "%BACK%"
+call mvnw.cmd clean package -DskipTests
+popd
 if not exist "%BACK%\%JAR%" (
-  echo [build] Construction du backend ^(Maven^), patientez...
-  pushd "%BACK%"
-  call mvnw.cmd clean package -DskipTests
-  popd
+  echo [build] ECHEC de la construction du backend. Arret.
+  pause
+  exit /b 1
 )
 
 REM --- 0bis. Dependances front si absentes ---
@@ -80,5 +85,4 @@ echo    Deposez vos .mp3 dans : %BACK%\incoming
 echo  Pour tout arreter : double-cliquez sur shutdown.bat
 echo ============================================
 echo.
-pause
 endlocal

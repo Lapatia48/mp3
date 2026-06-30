@@ -15,13 +15,23 @@ import s6.mp3.common.MetadataMessage;
 import s6.mp3.common.RabbitConfig;
 import s6.mp3.common.ScanMessage;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 /**
  * Programme 2 : Extracteur de metadonnees.
  *
  * <p>Consomme {@code queue.scan}, extrait les metadonnees du MP3 via
  * jaudiotagger, puis publie le resultat dans {@code queue.metadata}.
+ *
+ * <p>Avant de publier, l'artiste est confronte a la <b>liste noire</b>
+ * ({@link BlacklistFilter}) : si l'artiste est bloque, le morceau n'est pas
+ * importe — son fichier est deplace dans le dossier {@code blacklisted/} et
+ * aucun message n'est publie vers l'Uploader.
  *
  * <p>Activation : profil Spring {@code extractor}.
  */
@@ -32,9 +42,14 @@ public class MetadataExtractor {
     private static final Logger log = LoggerFactory.getLogger(MetadataExtractor.class);
 
     private final RabbitTemplate rabbitTemplate;
+    private final BlacklistFilter blacklist;
 
-    public MetadataExtractor(RabbitTemplate rabbitTemplate) {
+    @Value("${app.blacklisted-dir:blacklisted}")
+    private String blacklistedDir;
+
+    public MetadataExtractor(RabbitTemplate rabbitTemplate, BlacklistFilter blacklist) {
         this.rabbitTemplate = rabbitTemplate;
+        this.blacklist = blacklist;
     }
 
     @RabbitListener(queues = RabbitConfig.QUEUE_SCAN)
@@ -71,10 +86,34 @@ public class MetadataExtractor {
                 out.setTitle(stripExtension(msg.getFileName()));
             }
 
+            // Liste noire : artiste bloque -> on n'importe pas, on met de cote.
+            if (blacklist.isBlacklisted(out.getArtist())) {
+                log.info("Artiste sur liste noire : {} ({}) -> non importe", out.getArtist(), msg.getFileName());
+                moveToBlacklisted(file);
+                return;
+            }
+
             rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_METADATA, out);
             log.info("Metadonnees extraites avec succes : {}", out);
         } catch (Exception e) {
             log.error("Erreur lors de l'extraction de {} : {}", msg.getFileName(), e.getMessage(), e);
+        }
+    }
+
+    /** Deplace le fichier d'un artiste blackliste vers le dossier {@code blacklisted/}. */
+    private void moveToBlacklisted(File file) {
+        try {
+            File dir = new File(blacklistedDir).getAbsoluteFile();
+            if (!dir.exists() && !dir.mkdirs()) {
+                log.error("Impossible de creer le dossier blacklisted : {}", dir.getAbsolutePath());
+                return;
+            }
+            Path target = dir.toPath().resolve(file.getName());
+            Files.move(file.toPath(), target, StandardCopyOption.REPLACE_EXISTING);
+            log.info("Fichier blackliste deplace vers : {}", target.toAbsolutePath());
+        } catch (Exception e) {
+            log.error("Impossible de deplacer le fichier blackliste {} : {}",
+                    file.getName(), e.getMessage(), e);
         }
     }
 
