@@ -11,6 +11,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import s6.mp3.common.AuditPublisher;
 import s6.mp3.common.MetadataMessage;
 import s6.mp3.common.RabbitConfig;
 import s6.mp3.common.ScanMessage;
@@ -28,10 +29,10 @@ import java.nio.file.StandardCopyOption;
  * <p>Consomme {@code queue.scan}, extrait les metadonnees du MP3 via
  * jaudiotagger, puis publie le resultat dans {@code queue.metadata}.
  *
- * <p>Avant de publier, l'artiste est confronte a la <b>liste noire</b>
- * ({@link BlacklistFilter}) : si l'artiste est bloque, le morceau n'est pas
- * importe — son fichier est deplace dans le dossier {@code blacklisted/} et
- * aucun message n'est publie vers l'Uploader.
+ * <p>Avant de publier, le morceau est confronte a la <b>liste noire</b>
+ * ({@link BlacklistFilter}) : artiste, genre ou <b>duree</b> trop longue. Si
+ * bloque, le morceau n'est pas importe — son fichier est deplace dans le
+ * dossier {@code blacklisted/} et aucun message n'est publie vers l'Uploader.
  *
  * <p>Activation : profil Spring {@code extractor}.
  */
@@ -43,13 +44,15 @@ public class MetadataExtractor {
 
     private final RabbitTemplate rabbitTemplate;
     private final BlacklistFilter blacklist;
+    private final AuditPublisher audit;
 
     @Value("${app.blacklisted-dir:blacklisted}")
     private String blacklistedDir;
 
-    public MetadataExtractor(RabbitTemplate rabbitTemplate, BlacklistFilter blacklist) {
+    public MetadataExtractor(RabbitTemplate rabbitTemplate, BlacklistFilter blacklist, AuditPublisher audit) {
         this.rabbitTemplate = rabbitTemplate;
         this.blacklist = blacklist;
+        this.audit = audit;
     }
 
     @RabbitListener(queues = RabbitConfig.QUEUE_SCAN)
@@ -86,18 +89,24 @@ public class MetadataExtractor {
                 out.setTitle(stripExtension(msg.getFileName()));
             }
 
-            // Liste noire (artiste ou genre) : si bloque, on n'importe pas et on
-            // met le fichier de cote dans le sous-dossier correspondant.
-            BlacklistFilter.Reason reason = blacklist.check(out.getArtist(), out.getGenre());
+            // Liste noire (artiste, genre ou duree) : si bloque, on n'importe pas
+            // et on met le fichier de cote dans le sous-dossier correspondant.
+            BlacklistFilter.Reason reason = blacklist.check(out.getArtist(), out.getGenre(), out.getDuration());
             if (reason != null) {
-                String cause = reason == BlacklistFilter.Reason.ARTIST ? out.getArtist() : out.getGenre();
+                String cause = switch (reason) {
+                    case ARTIST -> out.getArtist();
+                    case GENRE -> out.getGenre();
+                    case DURATION -> out.getDuration() + "s";
+                };
                 log.info("Sur liste noire ({}) : {} ({}) -> non importe",
                         reason.subdir(), cause, msg.getFileName());
                 moveToBlacklisted(file, reason.subdir());
+                audit.deleted(msg.getFileName(), reason.subdir(), cause);
                 return;
             }
 
             rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_METADATA, out);
+            audit.extracted(out);
             log.info("Metadonnees extraites avec succes : {}", out);
         } catch (Exception e) {
             log.error("Erreur lors de l'extraction de {} : {}", msg.getFileName(), e.getMessage(), e);

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
+import s6.mp3.common.AuditPublisher;
 import s6.mp3.common.MetadataMessage;
 import s6.mp3.common.RabbitConfig;
 
@@ -38,6 +39,11 @@ public class ApiUploader {
     private static final Logger log = LoggerFactory.getLogger(ApiUploader.class);
 
     private final RestClient restClient = RestClient.create();
+    private final AuditPublisher audit;
+
+    public ApiUploader(AuditPublisher audit) {
+        this.audit = audit;
+    }
 
     @Value("${app.api.upload-url}")
     private String uploadUrl;
@@ -80,6 +86,7 @@ public class ApiUploader {
 
         if (success) {
             log.info("Envoi termine avec succes");
+            audit.sent(msg);
             if (file.delete()) {
                 log.info("Suppression du fichier source : {}", msg.getFileName());
             } else {

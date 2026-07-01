@@ -1,0 +1,6 @@
+Ajouter une fonctionnalitee de fusion de playlist sur le web http://localhost:5173/#/playlists
+On aura un bouton fusionner playlist 
+
+
+Dans le programme 3, on va creer un fichier.txt, qui a un chiffre, ce chiffre sera une duree exprimee en secondes
+exemple le fichier a 180, Donc lors de l'extraction chaque fichier  

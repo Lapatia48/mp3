@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import s6.mp3.common.AuditPublisher;
 import s6.mp3.common.RabbitConfig;
 import s6.mp3.common.ScanMessage;
 
@@ -30,6 +31,7 @@ public class DirectoryScanner {
     private static final Logger log = LoggerFactory.getLogger(DirectoryScanner.class);
 
     private final RabbitTemplate rabbitTemplate;
+    private final AuditPublisher audit;
 
     /** Chemins absolus deja publies (evite de renvoyer le meme fichier a chaque scan). */
     private final Set<String> alreadySeen = ConcurrentHashMap.newKeySet();
@@ -37,8 +39,9 @@ public class DirectoryScanner {
     @Value("${app.incoming-dir}")
     private String incomingDir;
 
-    public DirectoryScanner(RabbitTemplate rabbitTemplate) {
+    public DirectoryScanner(RabbitTemplate rabbitTemplate, AuditPublisher audit) {
         this.rabbitTemplate = rabbitTemplate;
+        this.audit = audit;
     }
 
     @Scheduled(
@@ -75,6 +78,7 @@ public class DirectoryScanner {
             }
             log.info("Nouveau fichier detecte : {}", f.getName());
             rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_SCAN, new ScanMessage(f.getName(), abs));
+            audit.scanned(f.getName(), abs);
             detected++;
         }
 

@@ -15,15 +15,19 @@ import java.util.List;
 /**
  * Liste noire d'import : par <b>artiste</b> et par <b>genre</b>.
  *
- * <p>Deux fichiers, meme logique :
+ * <p>Trois fichiers :
  * <ul>
  *   <li>{@code blacklist/artiste.txt} — artistes a bloquer ;</li>
- *   <li>{@code blacklist/genre.txt} — genres a bloquer.</li>
+ *   <li>{@code blacklist/genre.txt} — genres a bloquer ;</li>
+ *   <li>{@code blacklist/duree.txt} — <b>duree maximale</b> autorisee, un seul
+ *       nombre entier exprime <b>en secondes</b> (ex. {@code 180} = 3 min). Tout
+ *       morceau plus long est blackliste.</li>
  * </ul>
- * Un motif par ligne. La comparaison est <b>insensible a la casse</b> et porte
- * sur une <b>sous-chaine</b> : la ligne {@code skaiz} bloque l'artiste
- * {@code "Skaiz Official"}, la ligne {@code rock} bloque le genre {@code "Pop-Rock"}.
- * Les lignes vides et celles commencant par {@code #} (commentaires) sont ignorees.
+ * Pour l'artiste et le genre, un motif par ligne. La comparaison est
+ * <b>insensible a la casse</b> et porte sur une <b>sous-chaine</b> : la ligne
+ * {@code skaiz} bloque l'artiste {@code "Skaiz Official"}, la ligne {@code rock}
+ * bloque le genre {@code "Pop-Rock"}. Les lignes vides et celles commencant par
+ * {@code #} (commentaires) sont ignorees.
  *
  * <p>Chaque fichier est relu a chaud s'il a ete modifie (on peut donc ajouter une
  * entree sans redemarrer le programme).
@@ -37,7 +41,8 @@ public class BlacklistFilter {
     /** Categorie de blocage : sert aussi de nom de sous-dossier dans {@code blacklisted/}. */
     public enum Reason {
         ARTIST("artistes"),
-        GENRE("genres");
+        GENRE("genres"),
+        DURATION("duree");
 
         private final String subdir;
 
@@ -57,25 +62,35 @@ public class BlacklistFilter {
     @Value("${app.blacklist-genre-file:blacklist/genre.txt}")
     private String genreFile;
 
+    @Value("${app.blacklist-duration-file:blacklist/duree.txt}")
+    private String durationFile;
+
     private RuleSet artists;
     private RuleSet genres;
+    private DurationLimit maxDuration;
 
     /**
      * Determine si le morceau doit etre blackliste, et pour quelle raison.
      *
-     * @return {@link Reason#ARTIST}, {@link Reason#GENRE}, ou {@code null} si le
-     *         morceau est autorise. L'artiste est prioritaire sur le genre.
+     * @param duration duree du morceau en secondes (peut etre {@code null}).
+     * @return {@link Reason#ARTIST}, {@link Reason#GENRE}, {@link Reason#DURATION},
+     *         ou {@code null} si le morceau est autorise. Priorite : artiste,
+     *         puis genre, puis duree.
      */
-    public Reason check(String artist, String genre) {
+    public Reason check(String artist, String genre, Integer duration) {
         if (artists == null) {
             artists = new RuleSet("artistes", artistFile);
             genres = new RuleSet("genres", genreFile);
+            maxDuration = new DurationLimit(durationFile);
         }
         if (artists.matches(artist)) {
             return Reason.ARTIST;
         }
         if (genres.matches(genre)) {
             return Reason.GENRE;
+        }
+        if (maxDuration.exceededBy(duration)) {
+            return Reason.DURATION;
         }
         return null;
     }
@@ -144,6 +159,68 @@ public class BlacklistFilter {
             } catch (Exception e) {
                 log.error("Impossible de lire la liste noire ({}) {} : {}",
                         label, file.getAbsolutePath(), e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Duree maximale autorisee (secondes), chargee depuis un fichier a nombre
+     * unique et rechargee a chaud. {@code <= 0} ou fichier absent = aucune limite.
+     */
+    private static final class DurationLimit {
+
+        private static final Logger log = LoggerFactory.getLogger(DurationLimit.class);
+
+        private final String path;
+
+        /** Limite en secondes ; {@code 0} signifie « pas de limite ». */
+        private volatile int maxSeconds = 0;
+        private volatile long lastModified = -1L;
+
+        DurationLimit(String path) {
+            this.path = path;
+        }
+
+        /** La duree (secondes) depasse-t-elle la limite configuree ? */
+        boolean exceededBy(Integer duration) {
+            if (duration == null || duration <= 0) {
+                return false;
+            }
+            reloadIfNeeded();
+            return maxSeconds > 0 && duration > maxSeconds;
+        }
+
+        /** (Re)charge le fichier si sa date de modification a change. */
+        private synchronized void reloadIfNeeded() {
+            File file = new File(path).getAbsoluteFile();
+            if (!file.exists()) {
+                if (lastModified != 0L) {
+                    log.warn("Duree maximale ({}) introuvable : {} (aucune limite)", "duree", file.getAbsolutePath());
+                    maxSeconds = 0;
+                    lastModified = 0L;
+                }
+                return;
+            }
+            long modified = file.lastModified();
+            if (modified == lastModified) {
+                return;
+            }
+            int loaded = 0;
+            try {
+                for (String line : Files.readAllLines(file.toPath(), StandardCharsets.UTF_8)) {
+                    String entry = line.trim();
+                    if (entry.isEmpty() || entry.startsWith("#")) {
+                        continue;
+                    }
+                    loaded = Integer.parseInt(entry); // premier nombre = limite
+                    break;
+                }
+                maxSeconds = Math.max(0, loaded);
+                lastModified = modified;
+                log.info("Duree maximale chargee : {}s depuis {}", maxSeconds, file.getAbsolutePath());
+            } catch (Exception e) {
+                log.error("Impossible de lire la duree maximale {} : {}",
+                        file.getAbsolutePath(), e.getMessage());
             }
         }
     }
